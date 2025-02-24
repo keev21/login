@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-item>
+    <ion-label position="stacked">Nombre:</ion-label>
+    <ion-input type="text" [(ngModel)]="txt_nombre"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="stacked">Correo:</ion-label>
+    <ion-input type="text" [(ngModel)]="txt_correo"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="stacked">Clave:</ion-label>
+    <ion-input type="password" [(ngModel)]="txt_clave" (focusout)="vclave()"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="stacked">Confirmar clave:</ion-label>
+    <ion-input type="password" [(ngModel)]="txt_cclave" (focusout)="vclave()"></ion-input>
+  </ion-item>
+  
+  <ion-text color="danger" *ngIf="mensaje">
+    <p>{{mensaje}}</p>
+  </ion-text>
+  
+  <ion-item>
+    <ion-button (click)="registrar()" expand="block" color="primary" shape="round">
+      Registrarse
+    </ion-button>
+    <ion-button (click)="cancelar()" expand="block" color="danger" shape="round">
+      Cancelar
+    </ion-button>
+  </ion-item>
+</ion-content>
