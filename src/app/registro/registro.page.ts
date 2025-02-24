@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccesoService } from '../servicio/acceso.service';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class RegistroPage implements OnInit {
   mensaje: string = "";
 
   constructor(
-    public servicio: AccesoService
+    public servicio: AccesoService,
+    public navCtrl: NavController
     
 
   ) { }
@@ -34,6 +36,8 @@ export class RegistroPage implements OnInit {
 
   }
   cancelar(){
+    this.navCtrl.navigateRoot('home');
+
     
   }
   registrar(){
@@ -64,6 +68,7 @@ export class RegistroPage implements OnInit {
         if(res.estado==true){
           
           this.servicio.showToast(res.mensaje);
+          this.navCtrl.navigateRoot('home');
          
         }
         else{
