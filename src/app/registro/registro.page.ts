@@ -10,9 +10,8 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage implements OnInit {
-  txt_cedula: string = '';
+  
   txt_nombre: string = '';
-  txt_apellido: string = '';
   txt_correo: string = '';
   txt_clave: string = '';
   txt_cclave: string = '';
@@ -27,14 +26,19 @@ export class RegistroPage implements OnInit {
 
   ngOnInit() {
   }
-  vclave(){
-    if(this.txt_clave == this.txt_cclave){
-      this.mensaje = "";
-    }else{
+  
+  vclave() {
+    const claveValida = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  
+    if (this.txt_clave !== this.txt_cclave) {
       this.mensaje = "Las claves no coinciden";
+    } else if (!claveValida.test(this.txt_clave)) {
+      this.mensaje = "La clave debe tener al menos 8 caracteres, una mayúscula y un número";
+    } else {
+      this.mensaje = "";
     }
-
   }
+  
   cancelar(){
     this.navCtrl.navigateRoot('home');
 

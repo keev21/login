@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//toast
 import { ToastController } from '@ionic/angular';
-//preferences
 import { Preferences } from '@capacitor/preferences';
-
-
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -40,17 +34,4 @@ export class AccesoService {
     toast.present();
   }
 
-  async createSession(id: string, valor:string){
-    await Preferences.set({
-      key: id, 
-      value: valor
-    });
-  }
-  async getSession(id: string){
-    const item= await Preferences.get({ key: id });
-    return item.value;
-  }
-async closeSession(id: string){
-  await Preferences.clear();
-  }
 }

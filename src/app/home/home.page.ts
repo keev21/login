@@ -21,7 +21,7 @@ export class HomePage {
   ) {}
   login() {
     if (this.txt_email == "" || this.txt_clave == "") {
-      this.servicio.showToast("Faltan datos");
+      this.servicio.showToast("Llene todos los datos");
     } else {
       let datos = {
         "accion": "login",
